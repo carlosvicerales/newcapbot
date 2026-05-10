@@ -412,11 +412,11 @@ async function sendBotSequence(parts) {
     const text = parts[i].trim();
     if (!text) continue;
     showTyping();
-    const delay = Math.min(1800, Math.max(600, text.length * 18));
+    const delay = Math.min(1400, Math.max(500, text.length * 14));
     await new Promise(r => setTimeout(r, delay));
     hideTyping();
     addBubble(text, 'bot', i === parts.length - 1);
-    if (i < parts.length - 1) await new Promise(r => setTimeout(r, 300));
+    if (i < parts.length - 1) await new Promise(r => setTimeout(r, 280));
   }
 }
 
