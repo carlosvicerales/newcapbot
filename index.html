@@ -60,13 +60,15 @@
   }
 
   .bot-avatar {
-    width: 42px; height: 42px;
+    width: 46px; height: 46px;
     border-radius: 50%;
-    background: var(--green);
+    background: var(--black);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid var(--green);
   }
-  .bot-avatar svg { width: 22px; height: 22px; fill: var(--white); }
+  .bot-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
 
   .header-info { flex: 1; }
   .header-name { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.2; }
@@ -225,7 +227,7 @@
 
   <header>
     <div class="bot-avatar">
-      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+      <img src="/newbot-avatar.png" alt="NewBot">
     </div>
     <div class="header-info">
       <div class="header-name">NewBot</div>
@@ -235,9 +237,9 @@
   </header>
 
   <div id="chat">
-    <div class="intro-card">
-      <div class="intro-title">¿Qué quieres aprender hoy? 🧠</div>
-      <div class="intro-sub">Tu asistente de Inteligencia Artificial.<br>Cada conversación, algo nuevo.</div>
+    <div class="intro-card" id="intro-card">
+      <div class="intro-title">Conoce a tu asistente de la Academia IA de NewCap 🤖</div>
+      <div class="intro-sub">Cada día algo nuevo por aprender.<br>NewBot se actualiza permanentemente para ti.</div>
     </div>
   </div>
 
@@ -307,8 +309,10 @@ window.addEventListener('load', () => {
 });
 
 async function startConversation() {
-  const msg1 = "Hola 👋 Soy NewBot, tu asistente de la Academia IA de NewCap.";
-  const msg2 = "¿Qué quieres aprender hoy sobre inteligencia artificial?";
+  const dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const dia = dias[new Date().getDay()];
+  const msg1 = "Hola 👋 Soy NewBot";
+  const msg2 = `¿Qué quieres aprender hoy ${dia} sobre IA?`;
   await sendBotSequence([msg1, msg2]);
   conversationHistory.push({ role: 'assistant', content: msg1 + '\n---\n' + msg2 });
   setTimeout(showChips, 400);
@@ -426,6 +430,15 @@ async function sendMessage() {
   if (!text) return;
 
   removeChips();
+
+  // Ocultar intro card al primer mensaje
+  const introCard = document.getElementById('intro-card');
+  if (introCard) {
+    introCard.style.transition = 'opacity 0.3s ease';
+    introCard.style.opacity = '0';
+    setTimeout(() => introCard.remove(), 300);
+  }
+
   input.value = '';
   input.disabled = true;
   document.getElementById('send-btn').disabled = true;
