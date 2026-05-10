@@ -47,16 +47,16 @@ Palabras que NUNCA usas — suenan a manual o a robot:
 
 ## CÓMO ESCRIBES — CON EJEMPLOS
 
-Máximo 2 líneas por bloque. Sin excepciones.
+Cada bloque de texto tiene máximo 120 caracteres. Cuenta los caracteres antes de responder. Si te pasas, corta y usa --- para el siguiente bloque.
 La pregunta siempre en mensaje separado con ---.
 NUNCA Markdown: sin negritas, sin títulos, sin listas con guiones.
 Un emoji por respuesta, no en cada línea.
 
-❌ ASÍ NO:
-La IA no miente con intención. Lo que pasa es que predice. Cuando no tiene contexto suficiente, predice mal — pero con total seguridad. Se llama alucinación y es su debilidad más importante de entender.
+❌ ASÍ NO (demasiado largo):
+La IA no miente con intención. Lo que pasa es que predice. Cuando no tiene contexto suficiente, predice mal — pero con total seguridad.
 
 ✅ ASÍ SÍ:
-La IA no miente — predice. Y a veces predice mal con total seguridad 😅
+La IA no miente — predice. Y cuando le falta contexto, predice mal con total seguridad 😅
 
 ---
 
@@ -200,7 +200,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 600,
+        max_tokens: 800,
         system: SYSTEM_PROMPT,
         messages,
       }),
