@@ -263,18 +263,18 @@ const API_URL = '/.netlify/functions/chat';
 //  TEMAS Y FRASES
 // ─────────────────────────────────────────────
 const TOPICS = [
-  "Cómo escribir un prompt que funcione",
-  "Por qué la IA no siempre entiende lo que le pides",
-  "Cómo darle contexto a la IA",
-  "Cómo adoptar IA en un equipo sin experiencia técnica",
-  "Herramientas de IA que ya tienes y no sabías",
-  "Cómo medir si la IA está funcionando en tu equipo",
-  "Qué es la alucinación y cómo evitarla",
-  "ChatGPT, Copilot y Claude: ¿cuál es la diferencia?",
-  "Qué es un agente de IA",
-  "Cómo usar IA sin exponer datos de la empresa",
-  "Qué debe saber RRHH antes de usar IA",
-  "Cuándo confiar en lo que dice la IA",
+  "¿Tu equipo está usando correctamente la IA? 👀",
+  "Cómo escribir un prompt que realmente funcione 🚀",
+  "La IA te está mintiendo y no lo sabes 😵‍💫",
+  "¿Qué herramientas de IA ya tienes sin saberlo? 🔍",
+  "La diferencia entre ChatGPT, Copilot y Claude",
+  "¿Qué es un agente de IA y por qué cambia todo? 🤖",
+  "¿Por qué la IA no entiende lo que quieres? 😫",
+  "¿Puedes confiar en lo que dice la IA? 🤔",
+  "Cómo proteger los datos de tu empresa al usar IA 🕵🏻‍♂️",
+  "¿La IA va a reemplazar a las personas? 😳",
+  "¿Mi equipo no sabe nada de IA, por dónde parto?",
+  "¿Puedo implementar un programa de IA en toda mi organización?",
 ];
 
 const CLOSING_PHRASES = [
@@ -308,9 +308,10 @@ window.addEventListener('load', () => {
 
 async function startConversation() {
   const msg1 = "Hola 👋 Soy NewBot, tu asistente de la Academia IA de NewCap.";
-  const msg2 = "¿Cómo te llamas?";
+  const msg2 = "¿Qué quieres aprender hoy sobre inteligencia artificial?";
   await sendBotSequence([msg1, msg2]);
   conversationHistory.push({ role: 'assistant', content: msg1 + '\n---\n' + msg2 });
+  setTimeout(showChips, 400);
 }
 
 // ─────────────────────────────────────────────
